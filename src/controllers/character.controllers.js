@@ -1,7 +1,27 @@
 import personajesDb from "../models/character.model.js";
 
+
+//Crear, obtener personajes por id, obtener todos los personajes, actualizar y eliminar personajes.
 export const createPersonajes = async (req, res) => {
-  try {
+ 
+ try {
+
+  //destructurando el req.body 
+const {
+  name,  ki,
+  race,
+  gender,
+  description,
+ } = req.body;
+ 
+    //Validar en cada uno que no este vacio.
+if (name === undefined) return res.status(400).json({message: "no debe estar vacio"});
+if (ki === undefined) return res.status(400).json({message: "no debe estar vacio"});
+if (race === undefined) return res.status(400).json({message: "no debe estar vacio"});
+if (gender === undefined) return res.status(400).json({message: "no debe estar vacio"});
+if (description === undefined) return res.status(400).json({message: "no debe estar vacio"});
+
+//Crear personaje
     const personajes = await personajesDb.create(req.body);
     res.status(201).json(personajes);
   } catch (err) {
@@ -9,6 +29,7 @@ export const createPersonajes = async (req, res) => {
   }
 };
 
+//Obteniendo todos los personajes.
 export const getAllPersonajes = async (req, res) => {
   try {
     const personajes = await personajesDb.findAll();

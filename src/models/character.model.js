@@ -5,7 +5,7 @@ import sequelize from "../config/database.js";
 // validando los personajes
 const personajesDb = sequelize.define("personajesDb", {
     id: { type: DataTypes.STRING, autoIncrement:true,primaryKey:true },
-    nombre: { type: DataTypes.STRING, allownull: false },
+    name: { type: DataTypes.STRING, allownull: false },
     ki: { type: DataTypes.STRING, allownull: false },
     race: { type: DataTypes.STRING, allownull: false },
     gender: { type: DataTypes.STRING, allownull: false },
