@@ -1,11 +1,18 @@
-const express = require('express')
+import express from "express";
+import dotenv from "dotenv";
+import characterRouter from "./src/routes/character.routes.js";
+import initDB from "./db.js";
+dotenv.config();
 const app = express()
-const port = 3000
+const port = process.env.PORT;
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+app.use(express.json())
 
-app.listen(port, () => {
+app.use("/", characterRouter)
+
+initDB().then(() => {
+    app.listen(port, () => {
   console.log(`Este servidor esta corriendo desde el puerto: ${port}`)
 })
+})
+export default app;
