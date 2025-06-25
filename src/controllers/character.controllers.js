@@ -8,7 +8,8 @@ export const createPersonajes = async (req, res) => {
 
   //destructurando el req.body 
 const {
-  name,  ki,
+  name,
+  ki,
   race,
   gender,
   description,
@@ -22,7 +23,13 @@ if (gender === undefined) return res.status(400).json({message: "no debe estar v
 if (description === undefined) return res.status(400).json({message: "no debe estar vacio"});
 
 //Crear personaje
-    const personajes = await personajesDb.create(req.body);
+    const personajes = await personajesDb.create({
+    name,
+    ki,
+    race,
+    gender,
+    description,
+  });
     res.status(201).json(personajes);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -39,7 +46,7 @@ export const getAllPersonajes = async (req, res) => {
   }
 };
 
-export const getPersonajesById = async (res, req) => {
+export const getPersonajesById = async (req, res) => {
   try {
     const personajes = await personajesDb.findByPk(req.params.id);
     if (personajes) res.json(personajes);
@@ -61,7 +68,7 @@ export const updatePersonajes = async (req, res) => {
       res.status(404).json({ message: "Personaje no encontrado" });
     }
   } catch (err) {
-    res.satus(500).json({ error: err.message });
+    res.status(500).json({ error: err.message });
   }
 };
 
@@ -71,7 +78,7 @@ export const deletePersonajes = async (req, res) => {
       where: { id: req.params.id },
     });
     if (deleted) res.json({ message: "personaje eliminado" });
-    else res.satatus(404).json({ message: "personaje no encontrado" });
+    else res.status(404).json({ message: "personaje no encontrado" });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

@@ -3,11 +3,11 @@ import { createPersonajes, getAllPersonajes,deletePersonajes,getPersonajesById, 
 
 const router = express.Router();
 
-router.post("api/characters", createPersonajes);
-router.get("api/characters", getAllPersonajes);
-router.get("api/characters/:id", getPersonajesById);
-router.put("api/characters/:id", updatePersonajes);
-router.delete("api/characters/:id", deletePersonajes);
+router.post("/api/characters", createPersonajes);
+router.get("/api/characters", getAllPersonajes);
+router.get("/api/characters/:id", getPersonajesById);
+router.put("/api/characters/:id", updatePersonajes);
+router.delete("/api/characters/:id", deletePersonajes);
 
 export default router;
 
