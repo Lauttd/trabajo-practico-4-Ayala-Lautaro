@@ -1,6 +1,7 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../config/database.js";
 
+//-------------------------------------------------------------------------------------------------------------------//
 // validando los personajes
 const personajesDb = sequelize.define("personajesDb", {
   id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
@@ -11,4 +12,5 @@ const personajesDb = sequelize.define("personajesDb", {
   description: { type: DataTypes.STRING, allowNull: false },
 });
 
+//-------------------------------------------------------------------------------------------------------------------//
 export default personajesDb;
