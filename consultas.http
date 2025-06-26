@@ -1,0 +1,33 @@
+###GET
+GET http://localhost:5000/characters
+
+###POST
+POST http://localhost:5000/characters/
+Content-Type: application/json
+
+{
+    "name": "ramiro",
+    "ki": 200000,
+    "race": "saiyan",
+    "gender": "male",
+    "description": "hola"
+}
+
+###GET ID
+GET http://localhost:5000/characters/7
+
+### PUT
+PUT http://localhost:5000/characters/7
+Content-Type: application/json
+
+{
+    "name": "Lauty",
+    "ki": 200000,
+    "race": "saiyan",
+    "gender": "male",
+    "description": "hola",
+
+}
+
+###DELETE
+DELETE http://localhost:5000/characters/7
